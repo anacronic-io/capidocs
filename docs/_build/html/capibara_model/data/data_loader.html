@@ -1,0 +1,746 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Loader &mdash; capibara-gpt 1.0.17 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+
+  
+      <script src="../../_static/jquery.js"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+      <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+      <script src="../../_static/doctools.js"></script>
+      <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BitNet" href="../layers/bitnet.html" />
+    <link rel="prev" title="Language Utilities Module" href="../utils/language_utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            capibara-gpt
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Main Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../core/model.html">Model Core</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/model.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/model.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/model.html#capibaramodel">CapibaraModel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/model.html#bitnetliquidblock">BitnetLiquidBlock</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/model.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/model.html#model-creation">Model Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/model.html#training-evaluation">Training &amp; Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/model.html#utilities">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/model.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/model.html#example-usage">Example Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/inference.html">Inference Engine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#architecture">Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#key-components">Key Components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#implementation-details">Implementation Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#batched-inference">Batched Inference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#kv-cache-management">KV-Cache Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#sampling-strategies">Sampling Strategies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#performance-optimization">Performance Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#memory-management">Memory Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#throughput-optimization">Throughput Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#basic-generation">Basic Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#batch-processing">Batch Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#configuration-options">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#api-reference">API Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#core-classes">Core Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#utility-functions">Utility Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/config.html">Configuration Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/config.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/config.html#model-configuration-classes">Model Configuration Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/config.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dataset.html">Multilingual Dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#core-features">Core Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#multilingualdataset-class">MultilingualDataset Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dataset.html#key-components">Key Components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#data-loading">Data Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#language-processing">Language Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#tokenization">Tokenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#dataset-operations">Dataset Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#usage-examples">Usage Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../core/config.html">Configuration Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/config.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/config.html#model-configuration-classes">Model Configuration Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/config.html#usage">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/model.html">Model Core</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/model.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/model.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/model.html#capibaramodel">CapibaraModel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/model.html#bitnetliquidblock">BitnetLiquidBlock</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/model.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/model.html#model-creation">Model Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/model.html#training-evaluation">Training &amp; Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/model.html#utilities">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/model.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/model.html#example-usage">Example Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../core/inference.html">Inference Engine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#architecture">Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#key-components">Key Components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#implementation-details">Implementation Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#batched-inference">Batched Inference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#kv-cache-management">KV-Cache Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#sampling-strategies">Sampling Strategies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#performance-optimization">Performance Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#memory-management">Memory Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#throughput-optimization">Throughput Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#basic-generation">Basic Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#batch-processing">Batch Processing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#configuration-options">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#api-reference">API Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#core-classes">Core Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../core/inference.html#utility-functions">Utility Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/inference.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sub_models/liquid.html">Liquid Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/liquid.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/liquid.html#baselayer">BaseLayer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/liquid.html#liquid">Liquid</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/liquid.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/liquid.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/liquid.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/liquid.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sub_models/spike_ssm.html">Spike SSM Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/spike_ssm.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/spike_ssm.html#spikessmstate">SpikeSSMState</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/spike_ssm.html#spikessm">SpikeSSM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/spike_ssm.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/spike_ssm.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/spike_ssm.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/spike_ssm.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sub_models/aleph_Tilde.html">Aleph-TILDE Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/aleph_Tilde.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/aleph_Tilde.html#core-features">Core Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/aleph_Tilde.html#architecture">Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/aleph_Tilde.html#alephmodule-class">AlephModule Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/aleph_Tilde.html#key-components">Key Components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../sub_models/aleph_Tilde.html#rule-induction">Rule Induction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sub_models/aleph_Tilde.html#knowledge-management">Knowledge Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/aleph_Tilde.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/aleph_Tilde.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/aleph_Tilde.html#advanced-configuration">Advanced Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/aleph_Tilde.html#mathematical-foundation">Mathematical Foundation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/aleph_Tilde.html#rule-confidence">Rule Confidence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/aleph_Tilde.html#rule-coverage">Rule Coverage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/aleph_Tilde.html#implementation-details">Implementation Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/aleph_Tilde.html#data-structures">Data Structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/aleph_Tilde.html#optimization-techniques">Optimization Techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/aleph_Tilde.html#performance-considerations">Performance Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/aleph_Tilde.html#memory-management">Memory Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/aleph_Tilde.html#computational-efficiency">Computational Efficiency</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/aleph_Tilde.html#configuration-options">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/aleph_Tilde.html#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/aleph_Tilde.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sub_models/capibara_byte.html">Capibara Byte Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/capibara_byte.html#capibarabyte">CapibaraByte</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html">Capibara JAX SSM Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#capibarajaxssm">CapibaraJAXSSM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#helper-functions">Helper Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#hippo-initialization">hippo_initialization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#training-configuration">Training Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/contextual_activation.html">Contextual Activation Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/contextual_activation.html#scoringcontextualactivationmodule-class">ScoringContextualActivationModule Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../modules/contextual_activation.html#initialization">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modules/contextual_activation.html#methods">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../modules/contextual_activation.html#analyze-context-text-str-text-bytes-bytes-dict-str-any">analyze_context(text: str, text_bytes: bytes) -&gt; Dict[str, Any]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../modules/contextual_activation.html#process-text-text-str-dict-str-any">process_text(text: str) -&gt; Dict[str, Any]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/contextual_activation.html#component-keywords">Component Keywords</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../modules/contextual_activation.html#submodels">Submodels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modules/contextual_activation.html#layers">Layers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/contextual_activation.html#integration">Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/contextual_activation.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/conversation_manager.html">Conversation Manager Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/conversation_manager.html#coherencemanager-class">CoherenceManager Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../modules/conversation_manager.html#id5">)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/conversation_manager.html#logging">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/ethics_module.html">Ethics Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/ethics_module.html#ethicsmodule-class">EthicsModule Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/ethics_module.html#ethicschecker-class">EthicsChecker Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/ethics_module.html#logging">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/personality_module.html">Personality Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/personality_module.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../modules/personality_module.html#personalitymodule">PersonalityModule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modules/personality_module.html#personalitytrait">PersonalityTrait</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/personality_module.html#usage-example">Usage Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/personality_module.html#personality-application-process">Personality Application Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/personality_module.html#customizing-personalities">Customizing Personalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/personality_module.html#integration-with-capibaragpt">Integration with CapibaraGPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/personality_module.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ONNX_conversion/optimize_model.html">Model Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ONNX_conversion/optimize_model.html#optimize-model">optimize_model</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ONNX_conversion/build_model.html">ONNX Conversion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ONNX_conversion/build_model.html#build-model">build_model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ONNX_conversion/optimize_model.html">Model Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ONNX_conversion/optimize_model.html#optimize-model">optimize_model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ONNX_conversion/convert_to_tflite.html">TFLite Conversion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ONNX_conversion/convert_to_tflite.html#convert-to-tflite">convert_to_tflite</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../utils/generate_response.html">Generate Response Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../utils/generate_response.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utils/generate_response.html#detect-and-translate-input">detect_and_translate_input</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/generate_response.html#generate_response.detect_and_translate_input"><code class="docutils literal notranslate"><span class="pre">detect_and_translate_input()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../utils/generate_response.html#translate-response">translate_response</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/generate_response.html#generate_response.translate_response"><code class="docutils literal notranslate"><span class="pre">translate_response()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../utils/generate_response.html#generate-response">generate_response</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/generate_response.html#generate_response.generate_response"><code class="docutils literal notranslate"><span class="pre">generate_response()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../utils/generate_response.html#process-layers">process_layers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/generate_response.html#generate_response.process_layers"><code class="docutils literal notranslate"><span class="pre">process_layers()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/generate_response.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/generate_response.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/generate_response.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/generate_response.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/language_utils.html">Language Utilities Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../utils/language_utils.html#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../utils/language_utils.html#tokenize">tokenize</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/language_utils.html#language_utils.tokenize"><code class="docutils literal notranslate"><span class="pre">tokenize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../utils/language_utils.html#detokenize">detokenize</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/language_utils.html#language_utils.detokenize"><code class="docutils literal notranslate"><span class="pre">detokenize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../utils/language_utils.html#normalize-text">normalize_text</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/language_utils.html#language_utils.normalize_text"><code class="docutils literal notranslate"><span class="pre">normalize_text()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../utils/language_utils.html#detect-language">detect_language</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/language_utils.html#language_utils.detect_language"><code class="docutils literal notranslate"><span class="pre">detect_language()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../utils/language_utils.html#is-valid-language">is_valid_language</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/language_utils.html#language_utils.is_valid_language"><code class="docutils literal notranslate"><span class="pre">is_valid_language()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../utils/language_utils.html#translate-text">translate_text</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../utils/language_utils.html#language_utils.translate_text"><code class="docutils literal notranslate"><span class="pre">translate_text()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/language_utils.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/language_utils.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/language_utils.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../utils/language_utils.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Loader</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-features">Core Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#capibaradataloader">CapibaraDataLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-components">Key Components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation-details">Implementation Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-generator">Data Generator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#batch-collation">Batch Collation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-options">Configuration Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-optimization">Performance Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#memory-management">Memory Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#throughput-optimization">Throughput Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dataset.html">Multilingual Dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#core-features">Core Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#multilingualdataset-class">MultilingualDataset Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dataset.html#key-components">Key Components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#data-loading">Data Loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#language-processing">Language Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#tokenization">Tokenization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataset.html#dataset-operations">Dataset Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#usage-examples">Usage Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataset.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../layers/bitnet.html">BitNet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../layers/bitnet.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../layers/bitnet.html#key-features">Key Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/bitnet.html#classes-and-methods">Classes and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/bitnet.html#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../layers/bitnet.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layers/bitnet.html#creating-a-full-bitnet-model">Creating a Full BitNet Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/bitnet.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/bitnet.html#performance-metrics">Performance Metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/bitnet.html#compatibility-and-requirements">Compatibility and Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/bitnet.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/bitnet.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../layers/sparse_mamba.html">Sparse Mamba Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../layers/sparse_mamba.html#performance-benchmarks">Performance Benchmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/sparse_mamba.html#integration-with-other-architectures">Integration with Other Architectures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/sparse_mamba.html#advanced-usage-examples">Advanced Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../layers/sparse_mamba.html#training-with-gradual-sparsification">Training with Gradual Sparsification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layers/sparse_mamba.html#sparse-dense-mixed-precision">Sparse-Dense Mixed Precision</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/sparse_mamba.html#best-practices-and-optimization">Best Practices and Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../layers/self_attention.html">Self Attention Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../layers/self_attention.html#variants-and-extensions">Variants and Extensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/self_attention.html#mathematical-foundation">Mathematical Foundation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/self_attention.html#optimization-techniques">Optimization Techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/self_attention.html#advanced-usage-example">Advanced Usage Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../layers/games_theory.html">Game Theory Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../layers/games_theory.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/games_theory.html#theory">Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/games_theory.html#architecture">Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../layers/games_theory.html#components">Components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/games_theory.html#mathematical-formulation">Mathematical Formulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../layers/games_theory.html#strategy-generation">Strategy Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layers/games_theory.html#payoff-computation">Payoff Computation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layers/games_theory.html#nash-equilibrium">Nash Equilibrium</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/games_theory.html#implementation-details">Implementation Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../layers/games_theory.html#initialization">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layers/games_theory.html#forward-pass">Forward Pass</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/games_theory.html#usage-example">Usage Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/games_theory.html#references">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/games_theory.html#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/games_theory.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../layers/platonic.html">Platonic Layer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../layers/platonic.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../layers/platonic.html#key-features">Key Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/platonic.html#classes-and-methods">Classes and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/platonic.html#usage-example">Usage Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/platonic.html#advanced-features">Advanced Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/platonic.html#philosophical-foundations">Philosophical Foundations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/platonic.html#customization-and-fine-tuning">Customization and Fine-tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/platonic.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">capibara-gpt</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data Loader</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/anachronicsofa/capibara-gpt/blob/main/docs/capibara_model/data/data_loader.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-loader">
+<h1>Data Loader<a class="headerlink" href="#data-loader" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>The data loader module provides efficient data loading and preprocessing functionality for the CapibaraModel. It handles batching, shuffling, and preprocessing of training and inference data.</p>
+</section>
+<section id="core-features">
+<h2>Core Features<a class="headerlink" href="#core-features" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Efficient batch processing with TensorFlow datasets</p></li>
+<li><p>Support for multilingual data</p></li>
+<li><p>Dynamic batch size handling</p></li>
+<li><p>Customizable data preprocessing</p></li>
+<li><p>Memory-efficient data loading</p></li>
+<li><p>Integration with JAX/NumPy arrays</p></li>
+</ul>
+</section>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading"></a></h2>
+<section id="capibaradataloader">
+<h3>CapibaraDataLoader<a class="headerlink" href="#capibaradataloader" title="Permalink to this heading"></a></h3>
+</section>
+<section id="key-components">
+<h3>Key Components<a class="headerlink" href="#key-components" title="Permalink to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Data Loading</strong>
+- TensorFlow datasets integration
+- Custom dataset support
+- Error handling and logging</p></li>
+<li><p><strong>Batch Processing</strong>
+- Dynamic batch creation
+- Memory-efficient generators
+- Customizable collation</p></li>
+<li><p><strong>Preprocessing Pipeline</strong>
+- Tokenization
+- Attention mask generation
+- Label processing</p></li>
+</ol>
+</section>
+</section>
+<section id="implementation-details">
+<h2>Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this heading"></a></h2>
+<section id="data-generator">
+<h3>Data Generator<a class="headerlink" href="#data-generator" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_data_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generator for iterating over data in batches.</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        Dict containing batched tensors:</span>
+<span class="sd">            - input_ids: Token IDs</span>
+<span class="sd">            - attention_mask: Attention masks</span>
+<span class="sd">            - labels: Target labels</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="batch-collation">
+<h3>Batch Collation<a class="headerlink" href="#batch-collation" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_collate_fn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Custom collation for batch creation.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        batch: List of individual examples</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Dictionary of batched arrays</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Permalink to this heading"></a></h2>
+<section id="basic-usage">
+<h3>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">capibara_model.data.data_loader</span> <span class="kn">import</span> <span class="n">CapibaraDataLoader</span>
+<span class="kn">from</span> <span class="nn">capibara_model.core.config</span> <span class="kn">import</span> <span class="n">CapibaraConfig</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span>
+
+<span class="c1"># Initialize components</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">CapibaraConfig</span><span class="p">()</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;nous-capybara&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create data loader</span>
+<span class="n">loader</span> <span class="o">=</span> <span class="n">CapibaraDataLoader</span><span class="p">(</span>
+    <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;wikitext&quot;</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Iterate over batches</span>
+<span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+    <span class="n">input_ids</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">]</span>
+    <span class="n">attention_mask</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;attention_mask&quot;</span><span class="p">]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;labels&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="configuration-options">
+<h2>Configuration Options<a class="headerlink" href="#configuration-options" title="Permalink to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DataLoaderConfig</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration for data loader.&quot;&quot;&quot;</span>
+
+    <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span>
+    <span class="n">shuffle</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">num_workers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">max_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2048</span>
+    <span class="n">dataset_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;wikitext&quot;</span>
+    <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+<section id="performance-optimization">
+<h2>Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permalink to this heading"></a></h2>
+<section id="memory-management">
+<h3>Memory Management<a class="headerlink" href="#memory-management" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Efficient batch generation</p></li>
+<li><p>Prefetching support</p></li>
+<li><p>Dynamic memory allocation</p></li>
+</ul>
+</section>
+<section id="throughput-optimization">
+<h3>Throughput Optimization<a class="headerlink" href="#throughput-optimization" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Parallel data loading</p></li>
+<li><p>Efficient preprocessing</p></li>
+<li><p>Caching mechanisms</p></li>
+</ul>
+</section>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>tensorflow</p></li>
+<li><p>jax</p></li>
+<li><p>numpy</p></li>
+<li><p>transformers</p></li>
+<li><p>tensorflow_datasets</p></li>
+</ul>
+</section>
+<section id="see-also">
+<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="dataset.html"><span class="doc">Multilingual Dataset</span></a>: Dataset documentation</p></li>
+<li><p><a class="reference internal" href="../core/config.html"><span class="doc">Configuration Documentation</span></a>: Configuration system</p></li>
+<li><p><span class="xref std std-doc">../utils/tokenizer</span>: Tokenizer documentation</p></li>
+</ul>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Ensure proper dataset configuration before initialization</p></li>
+<li><p>Monitor memory usage with large batch sizes</p></li>
+<li><p>Consider using caching for repeated data access</p></li>
+<li><p>Adjust num_workers based on available CPU cores</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../utils/language_utils.html" class="btn btn-neutral float-left" title="Language Utilities Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../layers/bitnet.html" class="btn btn-neutral float-right" title="BitNet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Marco Durán.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
