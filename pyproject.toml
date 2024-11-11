@@ -10,7 +10,7 @@ readme = "README.md"
 authors = [
     { name = "Marco Durán", email = "marco@anachroni.co" }
 ]
-license = { file = "LICENSE" }
+license = "MIT"
 requires-python = ">=3.9"
 classifiers = [
     "Development Status :: 4 - Beta",
