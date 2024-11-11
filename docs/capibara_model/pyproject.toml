@@ -30,23 +30,11 @@ dependencies = [
     "transformers>=4.30.0",
 ]
 
-[project.urls]
-Homepage = "https://github.com/anachroni-io/CapibaraModel-cli"
-Documentation = "https://capibaramodel.readthedocs.io/"
-Repository = "https://github.com/anachroni-io/CapibaraModel-cli.git"
-Issues = "https://github.com/anachroni-io/CapibaraModel-cli/issues"
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
 
-[project.scripts]
-capibara = "capibara_model.main:main"
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/capibara_model"]
-
-[tool.hatch.build.targets.sdist]
-include = [
-    "/src",
-    "/tests",
-    "License",
-    "README.md",
-    "pyproject.toml"
-]
+[project]
+name = "capibaraGPT"
+version = "1.1.3"
+dependencies = []

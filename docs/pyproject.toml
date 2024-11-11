@@ -1,0 +1,14 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "capibara_model"
+version = "1.2.3"
+description = "capibara-model"
+authors = [
+    { name = "Marco Durán", email = "marco@anachroni.co" }
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/capibara_model"]
