@@ -8,7 +8,7 @@ CoherenceManager Class
 
 The `CoherenceManager` class handles the coherence of responses in conversations, ensuring that the dialogue remains on-topic and ethically appropriate.
 
-### Initialization
+Initialization
 
 The class is initialized with the following parameters:
 
@@ -24,9 +24,9 @@ self.tts_model = CapibaraTextToSpeech(
 )
 ```
 
-### Methods
+Methods
 
-#### `get_coherence_response(response, context)`
+#`get_coherence_response(response, context)`
 
 Selects a random response to use when coherence is lost.
 
@@ -35,17 +35,17 @@ Selects a random response to use when coherence is lost.
 
 Returns a string that is either the original response or an adjusted, ethical response if coherence is lost.
 
-#### `add_coherence_response(response)`
+`add_coherence_response(response)`
 
 Adds a new coherence response to the list.
 
 - **response** (`str`): The new coherence response to add.
 
-#### `clear_coherence_responses()`
+`clear_coherence_responses()`
 
 Clears all coherence responses from the list.
 
-#### `check_ethics(response)`
+`check_ethics(response)`
 
 Checks if a response is ethical.
 
@@ -53,7 +53,7 @@ Checks if a response is ethical.
 
 Returns a boolean indicating whether the response is ethical.
 
-#### `initialize()`
+`initialize()`
 
 Class method to initialize any global settings for `CoherenceManager`.
 

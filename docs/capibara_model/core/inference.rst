@@ -93,6 +93,80 @@ Throughput Optimization
 - Efficient attention implementation
 - Optimized tokenization
 
+Hardware Optimization Guide
+=========================
+
+TPU Setup
+---------
+
+Installation
+~~~~~~~~~~~
+.. code-block:: bash
+
+    # Instalación básica para TPU
+    pip install "jax[tpu]" -f https://storage.googleapis.com/jax-releases/libtpu_releases.html
+
+TPU Optimizations
+---------------
+
+Memory Management
+~~~~~~~~~~~~~~~
+- Acceso a hasta 300GB de memoria en el CPU del TPU
+- Uso eficiente de los 8 cores TPU
+- Gestión de memoria dinámica con JAX
+
+Key Features
+~~~~~~~~~~~
+1. **TPU CPU Usage**
+   - Ejecutar operaciones en CPU del TPU usando ``tf.device(None)``
+   - Acceso a memoria extendida (hasta 300GB)
+   - Ideal para modelos grandes como GPT-2 1.5B
+
+2. **Multi-Core Processing**
+   - 8 cores TPU disponibles
+   - Procesamiento paralelo eficiente
+   - Optimización automática de carga
+
+3. **Memory Optimization**
+   - KV-cache para inferencia eficiente
+   - Gradient checkpointing
+   - Batch processing optimizado
+
+Best Practices
+-------------
+
+1. **Device Placement**
+   - Usar TPU cores para computación intensiva
+   - Usar TPU CPU para operaciones de memoria grande
+   - Balancear carga entre cores
+
+2. **Memory Management**
+   - Implementar gradient checkpointing
+   - Usar batch dinámico basado en memoria disponible
+   - Optimizar cache KV
+
+3. **Performance Tuning**
+   - JIT compilation para operaciones frecuentes
+   - Vectorización automática
+   - Paralelismo de datos eficiente
+
+Example Configuration
+-------------------
+
+.. code-block:: python
+
+    import jax
+    import jax.numpy as jnp
+    from jax.experimental import maps
+    
+    # Verificar dispositivos TPU
+    devices = jax.devices()
+    print(f"TPU devices available: {len(devices)}")
+    
+    # Configurar memoria y optimización
+    jax.config.update('jax_platform_name', 'tpu')
+    jax.config.update('jax_enable_x64', False)
+
 Usage Examples
 ------------
 

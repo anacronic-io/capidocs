@@ -1,0 +1,448 @@
+[
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "sphinx_rtd_theme",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sphinx_rtd_theme",
+        "description": "sphinx_rtd_theme",
+        "detail": "sphinx_rtd_theme",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "find_packages",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "warnings",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "warnings",
+        "description": "warnings",
+        "detail": "warnings",
+        "documentation": {}
+    },
+    {
+        "label": "Version",
+        "importPath": "packaging.version",
+        "description": "packaging.version",
+        "isExtraImport": true,
+        "detail": "packaging.version",
+        "documentation": {}
+    },
+    {
+        "label": "project",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "project = 'capibara-gpt'\ncopyright = f'{datetime.now().year}, Marco Durán'\nauthor = 'Marco Durán'\nrelease = '1.2.2'\nversion = '1.1'\n# Configuración del tema\nhtml_theme = 'sphinx_rtd_theme'\nhtml_theme_path = [sphinx_rtd_theme.get_html_theme_path()]\n# Extensiones\nextensions = [",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "copyright",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "copyright = f'{datetime.now().year}, Marco Durán'\nauthor = 'Marco Durán'\nrelease = '1.2.2'\nversion = '1.1'\n# Configuración del tema\nhtml_theme = 'sphinx_rtd_theme'\nhtml_theme_path = [sphinx_rtd_theme.get_html_theme_path()]\n# Extensiones\nextensions = [\n    'sphinx.ext.autodoc',",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "author",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "author = 'Marco Durán'\nrelease = '1.2.2'\nversion = '1.1'\n# Configuración del tema\nhtml_theme = 'sphinx_rtd_theme'\nhtml_theme_path = [sphinx_rtd_theme.get_html_theme_path()]\n# Extensiones\nextensions = [\n    'sphinx.ext.autodoc',\n    'sphinx.ext.napoleon',",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "release",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "release = '1.2.2'\nversion = '1.1'\n# Configuración del tema\nhtml_theme = 'sphinx_rtd_theme'\nhtml_theme_path = [sphinx_rtd_theme.get_html_theme_path()]\n# Extensiones\nextensions = [\n    'sphinx.ext.autodoc',\n    'sphinx.ext.napoleon',\n    'sphinx.ext.viewcode',",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "version",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "version = '1.1'\n# Configuración del tema\nhtml_theme = 'sphinx_rtd_theme'\nhtml_theme_path = [sphinx_rtd_theme.get_html_theme_path()]\n# Extensiones\nextensions = [\n    'sphinx.ext.autodoc',\n    'sphinx.ext.napoleon',\n    'sphinx.ext.viewcode',\n    'sphinx_rtd_theme',",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_theme",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "html_theme = 'sphinx_rtd_theme'\nhtml_theme_path = [sphinx_rtd_theme.get_html_theme_path()]\n# Extensiones\nextensions = [\n    'sphinx.ext.autodoc',\n    'sphinx.ext.napoleon',\n    'sphinx.ext.viewcode',\n    'sphinx_rtd_theme',\n    # ... otras extensiones que puedas tener\n]",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_theme_path",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]\n# Extensiones\nextensions = [\n    'sphinx.ext.autodoc',\n    'sphinx.ext.napoleon',\n    'sphinx.ext.viewcode',\n    'sphinx_rtd_theme',\n    # ... otras extensiones que puedas tener\n]\n# Napoleon settings",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "extensions",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "extensions = [\n    'sphinx.ext.autodoc',\n    'sphinx.ext.napoleon',\n    'sphinx.ext.viewcode',\n    'sphinx_rtd_theme',\n    # ... otras extensiones que puedas tener\n]\n# Napoleon settings\nnapoleon_google_docstring = True\nnapoleon_numpy_docstring = True",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_google_docstring",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_google_docstring = True\nnapoleon_numpy_docstring = True\nnapoleon_include_init_with_doc = True\nnapoleon_include_private_with_doc = False\nnapoleon_include_special_with_doc = True\nnapoleon_use_admonition_for_examples = True\nnapoleon_use_admonition_for_notes = True\nnapoleon_use_admonition_for_references = True\nnapoleon_use_ivar = False\nnapoleon_use_param = True",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_numpy_docstring",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_numpy_docstring = True\nnapoleon_include_init_with_doc = True\nnapoleon_include_private_with_doc = False\nnapoleon_include_special_with_doc = True\nnapoleon_use_admonition_for_examples = True\nnapoleon_use_admonition_for_notes = True\nnapoleon_use_admonition_for_references = True\nnapoleon_use_ivar = False\nnapoleon_use_param = True\nnapoleon_use_rtype = True",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_include_init_with_doc",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_include_init_with_doc = True\nnapoleon_include_private_with_doc = False\nnapoleon_include_special_with_doc = True\nnapoleon_use_admonition_for_examples = True\nnapoleon_use_admonition_for_notes = True\nnapoleon_use_admonition_for_references = True\nnapoleon_use_ivar = False\nnapoleon_use_param = True\nnapoleon_use_rtype = True\nnapoleon_type_aliases = None",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_include_private_with_doc",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_include_private_with_doc = False\nnapoleon_include_special_with_doc = True\nnapoleon_use_admonition_for_examples = True\nnapoleon_use_admonition_for_notes = True\nnapoleon_use_admonition_for_references = True\nnapoleon_use_ivar = False\nnapoleon_use_param = True\nnapoleon_use_rtype = True\nnapoleon_type_aliases = None\n# Autodoc settings",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_include_special_with_doc",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_include_special_with_doc = True\nnapoleon_use_admonition_for_examples = True\nnapoleon_use_admonition_for_notes = True\nnapoleon_use_admonition_for_references = True\nnapoleon_use_ivar = False\nnapoleon_use_param = True\nnapoleon_use_rtype = True\nnapoleon_type_aliases = None\n# Autodoc settings\nautodoc_default_options = {",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_use_admonition_for_examples",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_use_admonition_for_examples = True\nnapoleon_use_admonition_for_notes = True\nnapoleon_use_admonition_for_references = True\nnapoleon_use_ivar = False\nnapoleon_use_param = True\nnapoleon_use_rtype = True\nnapoleon_type_aliases = None\n# Autodoc settings\nautodoc_default_options = {\n    'members': True,",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_use_admonition_for_notes",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_use_admonition_for_notes = True\nnapoleon_use_admonition_for_references = True\nnapoleon_use_ivar = False\nnapoleon_use_param = True\nnapoleon_use_rtype = True\nnapoleon_type_aliases = None\n# Autodoc settings\nautodoc_default_options = {\n    'members': True,\n    'member-order': 'bysource',",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_use_admonition_for_references",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_use_admonition_for_references = True\nnapoleon_use_ivar = False\nnapoleon_use_param = True\nnapoleon_use_rtype = True\nnapoleon_type_aliases = None\n# Autodoc settings\nautodoc_default_options = {\n    'members': True,\n    'member-order': 'bysource',\n    'special-members': '__init__',",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_use_ivar",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_use_ivar = False\nnapoleon_use_param = True\nnapoleon_use_rtype = True\nnapoleon_type_aliases = None\n# Autodoc settings\nautodoc_default_options = {\n    'members': True,\n    'member-order': 'bysource',\n    'special-members': '__init__',\n    'undoc-members': True,",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_use_param",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_use_param = True\nnapoleon_use_rtype = True\nnapoleon_type_aliases = None\n# Autodoc settings\nautodoc_default_options = {\n    'members': True,\n    'member-order': 'bysource',\n    'special-members': '__init__',\n    'undoc-members': True,\n    'exclude-members': '__weakref__'",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_use_rtype",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_use_rtype = True\nnapoleon_type_aliases = None\n# Autodoc settings\nautodoc_default_options = {\n    'members': True,\n    'member-order': 'bysource',\n    'special-members': '__init__',\n    'undoc-members': True,\n    'exclude-members': '__weakref__'\n}",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "napoleon_type_aliases",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "napoleon_type_aliases = None\n# Autodoc settings\nautodoc_default_options = {\n    'members': True,\n    'member-order': 'bysource',\n    'special-members': '__init__',\n    'undoc-members': True,\n    'exclude-members': '__weakref__'\n}\n# Template settings",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "autodoc_default_options",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "autodoc_default_options = {\n    'members': True,\n    'member-order': 'bysource',\n    'special-members': '__init__',\n    'undoc-members': True,\n    'exclude-members': '__weakref__'\n}\n# Template settings\ntemplates_path = ['_templates']\nexclude_patterns = [",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "templates_path",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "templates_path = ['_templates']\nexclude_patterns = [\n    '_build',\n    'Thumbs.db',\n    '.DS_Store',\n    '**.ipynb_checkpoints',\n    'build',\n    'dist'\n]\n# Source suffix",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "exclude_patterns",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "exclude_patterns = [\n    '_build',\n    'Thumbs.db',\n    '.DS_Store',\n    '**.ipynb_checkpoints',\n    'build',\n    'dist'\n]\n# Source suffix\nsource_suffix = {",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "source_suffix",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "source_suffix = {\n    '.rst': 'restructuredtext',\n    '.md': 'markdown',\n}\n# The master toctree document\nmaster_doc = 'index'\n# -- Options for HTML output -------------------------------------------------\nhtml_theme = 'sphinx_rtd_theme'\nhtml_static_path = ['_static']\nhtml_theme_options = {",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "master_doc",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "master_doc = 'index'\n# -- Options for HTML output -------------------------------------------------\nhtml_theme = 'sphinx_rtd_theme'\nhtml_static_path = ['_static']\nhtml_theme_options = {\n    'navigation_depth': 4,\n    'collapse_navigation': False,\n    'sticky_navigation': True,\n    'includehidden': True,\n}",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_theme",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "html_theme = 'sphinx_rtd_theme'\nhtml_static_path = ['_static']\nhtml_theme_options = {\n    'navigation_depth': 4,\n    'collapse_navigation': False,\n    'sticky_navigation': True,\n    'includehidden': True,\n}\n# Custom sidebar templates\nhtml_sidebars = {",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_static_path",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "html_static_path = ['_static']\nhtml_theme_options = {\n    'navigation_depth': 4,\n    'collapse_navigation': False,\n    'sticky_navigation': True,\n    'includehidden': True,\n}\n# Custom sidebar templates\nhtml_sidebars = {\n    '**': [",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_theme_options",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "html_theme_options = {\n    'navigation_depth': 4,\n    'collapse_navigation': False,\n    'sticky_navigation': True,\n    'includehidden': True,\n}\n# Custom sidebar templates\nhtml_sidebars = {\n    '**': [\n        'relations.html',",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_sidebars",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "html_sidebars = {\n    '**': [\n        'relations.html',\n        'searchbox.html',\n        'navigation.html',\n        'custom_sidebar.html',\n        'versions.html',\n        'toggle_sidebar.html',\n    ]\n}",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "latex_elements",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "latex_elements = {\n    'papersize': 'letterpaper',\n    'pointsize': '10pt',\n    'preamble': '',\n    'figure_align': 'htbp',\n    'extraclassoptions': 'openany,oneside',\n}\n# Intersphinx mapping\nintersphinx_mapping = {\n    'python': ('https://docs.python.org/3', None),",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "intersphinx_mapping",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "intersphinx_mapping = {\n    'python': ('https://docs.python.org/3', None),\n    'numpy': ('https://numpy.org/doc/stable/', None),\n    'jax': ('https://jax.readthedocs.io/en/latest/', None),\n    'flax': ('https://flax.readthedocs.io/en/latest/', None),\n    'optax': ('https://optax.readthedocs.io/en/latest/', None),\n    'xla': ('https://www.tensorflow.org/xla', None),\n    'tpu': ('https://cloud.google.com/tpu', None),\n    'tensorflow': ('https://www.tensorflow.org/api_docs', None),\n}",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "todo_include_todos",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "todo_include_todos = True\nviewcode_follow_imported_members = True\nadd_module_names = False\n# -- Options for MathJax -------------------------------------------------\nmathjax_path = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'\n# -- Options for logging -------------------------------------------------\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n# -- Setup for notebooks -------------------------------------------------\nnbsphinx_execute = 'never'",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "viewcode_follow_imported_members",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "viewcode_follow_imported_members = True\nadd_module_names = False\n# -- Options for MathJax -------------------------------------------------\nmathjax_path = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'\n# -- Options for logging -------------------------------------------------\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n# -- Setup for notebooks -------------------------------------------------\nnbsphinx_execute = 'never'\nnbsphinx_allow_errors = True",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "add_module_names",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "add_module_names = False\n# -- Options for MathJax -------------------------------------------------\nmathjax_path = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'\n# -- Options for logging -------------------------------------------------\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n# -- Setup for notebooks -------------------------------------------------\nnbsphinx_execute = 'never'\nnbsphinx_allow_errors = True\n# -- Additional configuration -------------------------------------------",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "mathjax_path",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "mathjax_path = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'\n# -- Options for logging -------------------------------------------------\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n# -- Setup for notebooks -------------------------------------------------\nnbsphinx_execute = 'never'\nnbsphinx_allow_errors = True\n# -- Additional configuration -------------------------------------------\nnitpicky = True\nnitpick_ignore = [",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "logger = logging.getLogger(__name__)\n# -- Setup for notebooks -------------------------------------------------\nnbsphinx_execute = 'never'\nnbsphinx_allow_errors = True\n# -- Additional configuration -------------------------------------------\nnitpicky = True\nnitpick_ignore = [\n    ('py:class', 'optional'),\n    ('py:class', 'Any'),\n]",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "nbsphinx_execute",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "nbsphinx_execute = 'never'\nnbsphinx_allow_errors = True\n# -- Additional configuration -------------------------------------------\nnitpicky = True\nnitpick_ignore = [\n    ('py:class', 'optional'),\n    ('py:class', 'Any'),\n]\n# -- GitHub repository -------------------------------------------------\nhtml_context = {",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "nbsphinx_allow_errors",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "nbsphinx_allow_errors = True\n# -- Additional configuration -------------------------------------------\nnitpicky = True\nnitpick_ignore = [\n    ('py:class', 'optional'),\n    ('py:class', 'Any'),\n]\n# -- GitHub repository -------------------------------------------------\nhtml_context = {\n    \"display_github\": True,",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "nitpicky",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "nitpicky = True\nnitpick_ignore = [\n    ('py:class', 'optional'),\n    ('py:class', 'Any'),\n]\n# -- GitHub repository -------------------------------------------------\nhtml_context = {\n    \"display_github\": True,\n    \"github_user\": \"anachroni\",\n    \"github_repo\": \"capibara-gpt\",",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "nitpick_ignore",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "nitpick_ignore = [\n    ('py:class', 'optional'),\n    ('py:class', 'Any'),\n]\n# -- GitHub repository -------------------------------------------------\nhtml_context = {\n    \"display_github\": True,\n    \"github_user\": \"anachroni\",\n    \"github_repo\": \"capibara-gpt\",\n    \"github_version\": \"main\",",
+        "detail": "docs.conf",
+        "documentation": {}
+    },
+    {
+        "label": "html_context",
+        "kind": 5,
+        "importPath": "docs.conf",
+        "description": "docs.conf",
+        "peekOfCode": "html_context = {\n    \"display_github\": True,\n    \"github_user\": \"anachroni\",\n    \"github_repo\": \"capibara-gpt\",\n    \"github_version\": \"main\",\n    \"conf_py_path\": \"/docs/\",\n}",
+        "detail": "docs.conf",
+        "documentation": {}
+    }
+]

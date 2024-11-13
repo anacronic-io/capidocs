@@ -21,8 +21,7 @@ Methods
 ^^^^^^^
 
 analyze_context(text: str, text_bytes: bytes) -> Dict[str, Any]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+---------------------------------------------------------------
 Analyzes the context of input text and determines which components should be activated.
 
 Parameters:
@@ -38,7 +37,7 @@ Returns:
         - managed_text: The processed text after context management
 
 process_text(text: str) -> Dict[str, Any]
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------------
 
 Processes text using TTS and coherence detection.
 

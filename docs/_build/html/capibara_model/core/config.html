@@ -1,26 +1,28 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Configuration Documentation &mdash; capibara-gpt 1.0.17 documentation</title>
+  <title>Configuration Module &mdash; capibara-gpt 1.2.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
 
   
-      <script src="../../_static/jquery.js"></script>
-      <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-      <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-      <script src="../../_static/doctools.js"></script>
-      <script src="../../_static/sphinx_highlight.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Multilingual Dataset" href="../data/dataset.html" />
-    <link rel="prev" title="Inference Engine" href="inference.html" /> 
+    <link rel="next" title="Model Core" href="model.html" />
+    <link rel="prev" title="Welcome to Capibara-GPT’s Documentation!" href="../../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -34,6 +36,9 @@
           <a href="../../index.html" class="icon icon-home">
             capibara-gpt
           </a>
+              <div class="version">
+                1.1
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -42,22 +47,56 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Main Contents:</span></p>
-<ul class="current">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-features">Key Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-classes">Configuration Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#capibaraconfig">CapibaraConfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trainingconfig">TrainingConfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modelconfig">ModelConfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pruningconfig">PruningConfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wandbconfig">WandbConfig</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#loading-from-environment-variables">Loading from Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-from-dictionary">Loading from Dictionary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-variables">Environment Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#training-configuration">Training Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-configuration">Model Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pruning-configuration">Pruning Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#weights-biases-configuration">Weights &amp; Biases Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#validation">Validation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="model.html">Model Core</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="model.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model.html#classes">Classes</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="model.html#capibaramodel">CapibaraModel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#bitnetliquidblock">BitnetLiquidBlock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model.html#component-classes">Component Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#bitnetliquidblock">BitnetLiquidBlock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#embeddinglayer">EmbeddingLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#attentionlayer">AttentionLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#bitnetlayer">BitnetLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#outputlayer">OutputLayer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="model.html#functions">Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model-creation">Model Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model.html#model-creation-and-management">Model Creation and Management</a></li>
 <li class="toctree-l3"><a class="reference internal" href="model.html#training-evaluation">Training &amp; Evaluation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#utilities">Utilities</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#dependencies">Dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="model.html#core-libraries">Core Libraries:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model.html#custom-components">Custom Components:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model.html#submodels">Submodels:</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="model.html#example-usage">Example Usage</a></li>
 </ul>
 </li>
@@ -78,89 +117,20 @@
 <li class="toctree-l3"><a class="reference internal" href="inference.html#throughput-optimization">Throughput Optimization</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="inference.html#usage-examples">Usage Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="inference.html#basic-generation">Basic Generation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="inference.html#batch-processing">Batch Processing</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="inference.html#configuration-options">Configuration Options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inference.html#api-reference">API Reference</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="inference.html#core-classes">Core Classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="inference.html#utility-functions">Utility Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inference.html#hardware-optimization-guide">Hardware Optimization Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="inference.html#tpu-setup">TPU Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="inference.html#installation">Installation</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="inference.html#see-also">See Also</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inference.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inference.html#tpu-optimizations">TPU Optimizations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="inference.html#id1">Memory Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="inference.html#key-features">Key Features</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#model-configuration-classes">Model Configuration Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../data/dataset.html">Multilingual Dataset</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../data/dataset.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/dataset.html#core-features">Core Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/dataset.html#multilingualdataset-class">MultilingualDataset Class</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../data/dataset.html#key-components">Key Components</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../data/dataset.html#data-loading">Data Loading</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../data/dataset.html#language-processing">Language Processing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../data/dataset.html#tokenization">Tokenization</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../data/dataset.html#dataset-operations">Dataset Operations</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../data/dataset.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/dataset.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/dataset.html#usage-examples">Usage Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/dataset.html#see-also">See Also</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../data/dataset.html#notes">Notes</a></li>
-</ul>
-</li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#model-configuration-classes">Model Configuration Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="model.html">Model Core</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="model.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#classes">Classes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model.html#capibaramodel">CapibaraModel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#bitnetliquidblock">BitnetLiquidBlock</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#functions">Functions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="model.html#model-creation">Model Creation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#training-evaluation">Training &amp; Evaluation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model.html#utilities">Utilities</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="model.html#example-usage">Example Usage</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="inference.html">Inference Engine</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="inference.html#overview">Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="inference.html#architecture">Architecture</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="inference.html#key-components">Key Components</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="inference.html#implementation-details">Implementation Details</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="inference.html#batched-inference">Batched Inference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="inference.html#kv-cache-management">KV-Cache Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="inference.html#sampling-strategies">Sampling Strategies</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="inference.html#performance-optimization">Performance Optimization</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="inference.html#memory-management">Memory Management</a></li>
-<li class="toctree-l3"><a class="reference internal" href="inference.html#throughput-optimization">Throughput Optimization</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="inference.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="inference.html#example-configuration">Example Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="inference.html#usage-examples">Usage Examples</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="inference.html#basic-generation">Basic Generation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="inference.html#batch-processing">Batch Processing</a></li>
@@ -240,14 +210,17 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sub_models/capibara_byte.html">Capibara Byte Module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#classes">Classes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../sub_models/capibara_byte.html#capibarabyte">CapibaraByte</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#classes">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#capibarabyte">CapibaraByte</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#implementation-details">Implementation Details</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#dependencies">Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#example-usage">Example Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#see-also">See Also</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#core-dependencies">Core Dependencies:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#custom-layer-dependencies">Custom Layer Dependencies:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#python-package-requirements">Python Package Requirements:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#optional-dependencies">Optional Dependencies:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_byte.html#installation">Installation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html">Capibara JAX SSM Module</a><ul>
@@ -266,18 +239,83 @@
 <li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#see-also">See Also</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../sub_models/capibara2.html">Capibara2 Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara2.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/capibara2.html#baselayer">BaseLayer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/capibara2.html#capibara2">Capibara2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara2.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara2.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara2.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara2.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html">Capibara JAX SSM Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#capibarajaxssm">CapibaraJAXSSM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#helper-functions">Helper Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#hippo-initialization">hippo_initialization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#training-configuration">Training Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/capibara_jax_ssm.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sub_models/deep_dialog.html">Deep Dialog Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/deep_dialog.html#sub-modules">Sub-modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/deep_dialog.html#basicneeds">BasicNeeds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/deep_dialog.html#compensatorynarrative">CompensatoryNarrative</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/deep_dialog.html#uncertainmemory">UncertainMemory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/deep_dialog.html#blamenegation">BlameNegation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/deep_dialog.html#reconnection">Reconnection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/deep_dialog.html#internaldialogue">InternalDialogue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/deep_dialog.html#initialization-and-forward-function">Initialization and Forward Function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/deep_dialog.html#example-usage">Example Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sub_models/snns_LiCell.html">Spiking Neural Network State (SNNS) Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/snns_LiCell.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/snns_LiCell.html#lifstate">LIFState</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/snns_LiCell.html#lifcell">LIFCell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/snns_LiCell.html#snns">SNNS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/snns_LiCell.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/snns_LiCell.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/snns_LiCell.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/snns_LiCell.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sub_models/meta_bamdp.html">Meta BAMDP Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/meta_bamdp.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/meta_bamdp.html#baselayer">BaseLayer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sub_models/meta_bamdp.html#metabamdp">MetaBAMDP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/meta_bamdp.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/meta_bamdp.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/meta_bamdp.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sub_models/meta_bamdp.html#see-also">See Also</a></li>
+</ul>
+</li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../modules/contextual_activation.html">Contextual Activation Module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../modules/contextual_activation.html#scoringcontextualactivationmodule-class">ScoringContextualActivationModule Class</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../modules/contextual_activation.html#initialization">Initialization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../modules/contextual_activation.html#methods">Methods</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../modules/contextual_activation.html#analyze-context-text-str-text-bytes-bytes-dict-str-any">analyze_context(text: str, text_bytes: bytes) -&gt; Dict[str, Any]</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../modules/contextual_activation.html#process-text-text-str-dict-str-any">process_text(text: str) -&gt; Dict[str, Any]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modules/contextual_activation.html#methods">Methods</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/contextual_activation.html#analyze-context-text-str-text-bytes-bytes-dict-str-any">analyze_context(text: str, text_bytes: bytes) -&gt; Dict[str, Any]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/contextual_activation.html#process-text-text-str-dict-str-any">process_text(text: str) -&gt; Dict[str, Any]</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../modules/contextual_activation.html#component-keywords">Component Keywords</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../modules/contextual_activation.html#submodels">Submodels</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../modules/contextual_activation.html#layers">Layers</a></li>
@@ -314,10 +352,26 @@
 <li class="toctree-l2"><a class="reference internal" href="../modules/personality_module.html#notes">Notes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/capibara_tts.html">Capibara Text-to-Speech Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modules/capibara_tts.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/capibara_tts.html#capibaratexttospeech-class">CapibaraTextToSpeech Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../modules/capibara_tts.html#initialization">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modules/capibara_tts.html#methods">Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../modules/capibara_tts.html#text-to-spectrogram-text-str-np-ndarray">text_to_spectrogram(text: str) -&gt; np.ndarray</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../modules/capibara_tts.html#spectrogram-to-audio-spectrogram-np-ndarray-np-ndarray">spectrogram_to_audio(spectrogram: np.ndarray) -&gt; np.ndarray</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../modules/capibara_tts.html#handle-connection-websocket-path">handle_connection(websocket, path)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../modules/capibara_tts.html#start-websocket-server-host-localhost-port-8765-ssl-context-none">start_websocket_server(host=”localhost”, port=8765, ssl_context=None)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../modules/capibara_tts.html#synthesize-text-str-bytes">synthesize(text: str) -&gt; bytes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../modules/capibara_tts.html#generar-audio-texto-str-bytes">generar_audio(texto: str) -&gt; bytes</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../ONNX_conversion/optimize_model.html">Model Optimization</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../ONNX_conversion/optimize_model.html#optimize-model">optimize_model</a></li>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/capibara_tts.html#websocket-protocol">WebSocket Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/capibara_tts.html#ssl-configuration">SSL Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/capibara_tts.html#example-usage">Example Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/capibara_tts.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/capibara_tts.html#see-also">See Also</a></li>
 </ul>
 </li>
 </ul>
@@ -466,17 +520,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../layers/bitnet.html#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../layers/sparse_mamba.html">Sparse Mamba Layer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../layers/sparse_mamba.html#performance-benchmarks">Performance Benchmarks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../layers/sparse_mamba.html#integration-with-other-architectures">Integration with Other Architectures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../layers/sparse_mamba.html#advanced-usage-examples">Advanced Usage Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../layers/sparse_mamba.html#training-with-gradual-sparsification">Training with Gradual Sparsification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../layers/sparse_mamba.html#sparse-dense-mixed-precision">Sparse-Dense Mixed Precision</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../layers/sparse_mamba.html#best-practices-and-optimization">Best Practices and Optimization</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../layers/self_attention.html">Self Attention Layer</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../layers/self_attention.html#variants-and-extensions">Variants and Extensions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../layers/self_attention.html#mathematical-foundation">Mathematical Foundation</a></li>
@@ -521,6 +564,28 @@
 <li class="toctree-l2"><a class="reference internal" href="../layers/platonic.html#notes">Notes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../layers/MetaLa.html">MetaLACapibaraLayer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../layers/MetaLa.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/MetaLa.html#initialization">Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/MetaLa.html#forward-computation">Forward Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/MetaLa.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/MetaLa.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/MetaLa.html#dependencies">Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../layers/quineana.html">QuineLayer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../layers/quineana.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/quineana.html#classes">Classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../layers/quineana.html#epistemicinterdependence">EpistemicInterdependence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layers/quineana.html#analyticsyntheticrejection">AnalyticSyntheticRejection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layers/quineana.html#pragmaticadjustment">PragmaticAdjustment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../layers/quineana.html#id1">QuineLayer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/quineana.html#utility-functions">Utility Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../layers/quineana.html#example-usage">Example Usage</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -537,9 +602,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Configuration Documentation</li>
+      <li class="breadcrumb-item active">Configuration Module</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/anachronicsofa/capibara-gpt/blob/main/docs/capibara_model/core/config.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/anachroni/capibara-gpt/blob/main/docs/capibara_model/core/config.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -547,76 +612,160 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="configuration-documentation">
-<h1>Configuration Documentation<a class="headerlink" href="#configuration-documentation" title="Permalink to this heading"></a></h1>
-<p>This document provides an overview of the configuration settings used in the CapibaraGPT model. The configurations are defined in <cite>config.py</cite> and are essential for setting up the model’s environment and parameters.</p>
+  <section id="configuration-module">
+<h1>Configuration Module<a class="headerlink" href="#configuration-module" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>The configuration module provides a unified interface for managing CapibaraModel settings through environment variables, configuration files, and Weights &amp; Biases integration.</p>
+</section>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Environment variable loading with type conversion</p></li>
+<li><p>.env file support</p></li>
+<li><p>Weights &amp; Biases integration</p></li>
+<li><p>Default value handling</p></li>
+<li><p>Configuration validation</p></li>
+<li><p>Dataclass-based configuration structure</p></li>
+</ul>
+</section>
+<section id="configuration-classes">
+<h2>Configuration Classes<a class="headerlink" href="#configuration-classes" title="Permalink to this heading"></a></h2>
+<section id="capibaraconfig">
+<h3>CapibaraConfig<a class="headerlink" href="#capibaraconfig" title="Permalink to this heading"></a></h3>
+<p>Main configuration container that holds all sub-configurations:</p>
+<ul class="simple">
+<li><p>Training configuration</p></li>
+<li><p>Model parameters</p></li>
+<li><p>Pruning settings</p></li>
+<li><p>Weights &amp; Biases integration</p></li>
+</ul>
+</section>
+<section id="trainingconfig">
+<h3>TrainingConfig<a class="headerlink" href="#trainingconfig" title="Permalink to this heading"></a></h3>
+<p>Training-specific parameters including:</p>
+<ul class="simple">
+<li><p>Random seed</p></li>
+<li><p>Batch size</p></li>
+<li><p>Learning rate</p></li>
+<li><p>Number of epochs</p></li>
+<li><p>Optimizer selection</p></li>
+<li><p>Loss function</p></li>
+<li><p>Metrics</p></li>
+<li><p>Early stopping patience</p></li>
+</ul>
+</section>
+<section id="modelconfig">
+<h3>ModelConfig<a class="headerlink" href="#modelconfig" title="Permalink to this heading"></a></h3>
+<p>Model architecture parameters:</p>
+<ul class="simple">
+<li><p>Input dimension</p></li>
+<li><p>Hidden size</p></li>
+<li><p>Number of layers</p></li>
+<li><p>Dropout rate</p></li>
+<li><p>Activation function</p></li>
+</ul>
+</section>
+<section id="pruningconfig">
+<h3>PruningConfig<a class="headerlink" href="#pruningconfig" title="Permalink to this heading"></a></h3>
+<p>Model pruning parameters:</p>
+<ul class="simple">
+<li><p>MOR threshold</p></li>
+<li><p>Sparsity ratio</p></li>
+<li><p>Pruning method</p></li>
+<li><p>Pruning schedule</p></li>
+</ul>
+</section>
+<section id="wandbconfig">
+<h3>WandbConfig<a class="headerlink" href="#wandbconfig" title="Permalink to this heading"></a></h3>
+<p>Weights &amp; Biases integration settings:</p>
+<ul class="simple">
+<li><p>Project name</p></li>
+<li><p>Entity</p></li>
+<li><p>Model logging</p></li>
+<li><p>Gradient logging</p></li>
+</ul>
+</section>
+</section>
+<section id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Permalink to this heading"></a></h2>
+<section id="loading-from-environment-variables">
+<h3>Loading from Environment Variables<a class="headerlink" href="#loading-from-environment-variables" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">capibara_model.core.config</span> <span class="kn">import</span> <span class="n">CapibaraConfig</span>
+
+<span class="c1"># Load configuration from environment variables</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">CapibaraConfig</span><span class="o">.</span><span class="n">from_env</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="loading-from-dictionary">
+<h3>Loading from Dictionary<a class="headerlink" href="#loading-from-dictionary" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;training&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;batch_size&quot;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
+        <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="mf">0.001</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;hidden_size&quot;</span><span class="p">:</span> <span class="mi">1024</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">CapibaraConfig</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">config_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="environment-variables">
 <h2>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this heading"></a></h2>
-<p>The following environment variables are loaded from a <cite>.env</cite> file using <cite>python-dotenv</cite>:</p>
+<section id="training-configuration">
+<h3>Training Configuration<a class="headerlink" href="#training-configuration" title="Permalink to this heading"></a></h3>
 <ul class="simple">
-<li><p><strong>RANDOM_SEED</strong>: Seed for random number generation.</p></li>
-<li><p><strong>CAPIBARA_LOG_LEVEL</strong>: Logging level for the application.</p></li>
-<li><p><strong>CAPIBARA_BASE_CONFIG_PATH</strong>: Path to the base configuration file.</p></li>
-<li><p><strong>GCS_BUCKET_NAME</strong>: Name of the Google Cloud Storage bucket.</p></li>
-</ul>
-<p>These variables are accessed in the code as follows:</p>
-<p><code class="docutils literal notranslate"><span class="pre">`python</span>
-<span class="pre">import</span> <span class="pre">os</span>
-<span class="pre">RANDOM_SEED</span> <span class="pre">=</span> <span class="pre">os.getenv('RANDOM_SEED')</span>
-<span class="pre">CAPIBARA_LOG_LEVEL</span> <span class="pre">=</span> <span class="pre">os.getenv('CAPIBARA_LOG_LEVEL')</span>
-<span class="pre">CAPIBARA_BASE_CONFIG_PATH</span> <span class="pre">=</span> <span class="pre">os.getenv('CAPIBARA_BASE_CONFIG_PATH')</span>
-<span class="pre">GCS_BUCKET_NAME</span> <span class="pre">=</span> <span class="pre">os.getenv('GCS_BUCKET_NAME')</span>
-<span class="pre">`</span></code></p>
-</section>
-<section id="model-configuration-classes">
-<h2>Model Configuration Classes<a class="headerlink" href="#model-configuration-classes" title="Permalink to this heading"></a></h2>
-<p>### OptimizationConfig</p>
-<p>Defines the optimization settings for the model.</p>
-<ul class="simple">
-<li><p><strong>use_flash_attention</strong>: Enable flash attention (default: <cite>True</cite>).</p></li>
-<li><p><strong>use_rotary_embeddings</strong>: Use rotary embeddings (default: <cite>True</cite>).</p></li>
-<li><p><strong>use_alibi</strong>: Use ALiBi (Attention with Linear Biases) (default: <cite>True</cite>).</p></li>
-<li><p><strong>use_parallel_layers</strong>: Use parallel layers (default: <cite>True</cite>).</p></li>
-<li><p><strong>attention_implementation</strong>: Type of attention implementation (default: <cite>“flash”</cite>).</p></li>
-<li><p><strong>use_mixed_precision</strong>: Enable mixed precision training (default: <cite>True</cite>).</p></li>
-<li><p><strong>mixed_precision_dtype</strong>: Data type for mixed precision (default: <cite>“bfloat16”</cite>).</p></li>
-</ul>
-<p>### TPUConfig</p>
-<p>Configuration specific to TPU usage.</p>
-<ul class="simple">
-<li><p><strong>use_tpu</strong>: Enable TPU usage (default: <cite>True</cite>).</p></li>
-<li><p><strong>tpu_name</strong>: Name of the TPU (default: <cite>“capibara-tpu”</cite>).</p></li>
-<li><p><strong>tpu_zone</strong>: Zone of the TPU (default: <cite>“us-central1-a”</cite>).</p></li>
-<li><p><strong>gcp_project</strong>: Google Cloud Project name (default: <cite>“capibara-project”</cite>).</p></li>
-<li><p><strong>tpu_topology</strong>: Topology of the TPU (default: <cite>“v3-8”</cite>).</p></li>
-<li><p><strong>num_tpu_cores</strong>: Number of TPU cores (default: <cite>8</cite>).</p></li>
-</ul>
-<p>### TrainingConfig</p>
-<p>Defines the training parameters for the model.</p>
-<ul class="simple">
-<li><p><strong>batch_size</strong>: Size of the training batch (default: <cite>32</cite>).</p></li>
-<li><p><strong>learning_rate</strong>: Learning rate for the optimizer (default: <cite>5e-5</cite>).</p></li>
-<li><p><strong>num_train_steps</strong>: Number of training steps (default: <cite>100000</cite>).</p></li>
-<li><p><strong>num_warmup_steps</strong>: Number of warmup steps (default: <cite>1000</cite>).</p></li>
-<li><p><strong>optimizer</strong>: Optimizer type (default: <cite>“adamw”</cite>).</p></li>
-<li><p><strong>weight_decay</strong>: Weight decay for the optimizer (default: <cite>0.01</cite>).</p></li>
-<li><p><strong>gradient_accumulation_steps</strong>: Steps for gradient accumulation (default: <cite>1</cite>).</p></li>
-<li><p><strong>max_grad_norm</strong>: Maximum gradient norm (default: <cite>1.0</cite>).</p></li>
-<li><p><strong>seed</strong>: Random seed for training (default: <cite>42</cite>).</p></li>
+<li><p>TRAINING_SEED (default: 42)</p></li>
+<li><p>TRAINING_BATCH_SIZE (default: 32)</p></li>
+<li><p>TRAINING_LEARNING_RATE (default: 0.001)</p></li>
+<li><p>TRAINING_NUM_EPOCHS (default: 10)</p></li>
+<li><p>TRAINING_OPTIMIZER (default: ‘adam’)</p></li>
+<li><p>TRAINING_LOSS_FUNCTION (default: ‘cross_entropy’)</p></li>
+<li><p>TRAINING_METRICS</p></li>
+<li><p>TRAINING_EARLY_STOPPING_PATIENCE (default: 5)</p></li>
 </ul>
 </section>
-<section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
-<p>To use these configurations, ensure that the <cite>.env</cite> file is correctly set up in your project directory. The configurations can be accessed and modified in your Python code as needed.</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
-from capibara_model.core.config import OptimizationConfig, TPUConfig, TrainingConfig</p>
-<p># Example usage
-opt_config = OptimizationConfig()
-tpu_config = TPUConfig()
-train_config = TrainingConfig()</p>
-<p>print(f”Batch size: {train_config.batch_size}”)
-<a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
-<p>This document should be updated regularly to reflect any changes in the configuration settings or the addition of new parameters.</p>
+<section id="model-configuration">
+<h3>Model Configuration<a class="headerlink" href="#model-configuration" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>MODEL_INPUT_DIM (default: 768)</p></li>
+<li><p>MODEL_HIDDEN_SIZE (default: 768)</p></li>
+<li><p>MODEL_NUM_LAYERS (default: 12)</p></li>
+<li><p>MODEL_DROPOUT_RATE (default: 0.1)</p></li>
+<li><p>MODEL_ACTIVATION_FUNCTION (default: ‘relu’)</p></li>
+</ul>
+</section>
+<section id="pruning-configuration">
+<h3>Pruning Configuration<a class="headerlink" href="#pruning-configuration" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>PRUNING_MOR_THRESHOLD (default: 0.7)</p></li>
+<li><p>PRUNING_SPARSITY_RATIO (default: 0.5)</p></li>
+<li><p>PRUNING_METHOD (default: ‘magnitude’)</p></li>
+<li><p>PRUNING_SCHEDULE (default: ‘constant’)</p></li>
+</ul>
+</section>
+<section id="weights-biases-configuration">
+<h3>Weights &amp; Biases Configuration<a class="headerlink" href="#weights-biases-configuration" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>WANDB_PROJECT</p></li>
+<li><p>WANDB_ENTITY</p></li>
+<li><p>WANDB_LOG_MODEL (default: false)</p></li>
+<li><p>WANDB_LOG_GRADIENTS (default: false)</p></li>
+</ul>
+</section>
+</section>
+<section id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this heading"></a></h2>
+<p>The configuration system includes validation for:</p>
+<ul class="simple">
+<li><p>Dropout rate (must be between 0 and 1)</p></li>
+<li><p>Sparsity ratio (must be between 0 and 1)</p></li>
+<li><p>MOR threshold (must be between 0 and 1)</p></li>
+</ul>
 </section>
 </section>
 
@@ -624,8 +773,8 @@ train_config = TrainingConfig()</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="inference.html" class="btn btn-neutral float-left" title="Inference Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../data/dataset.html" class="btn btn-neutral float-right" title="Multilingual Dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../index.html" class="btn btn-neutral float-left" title="Welcome to Capibara-GPT’s Documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="model.html" class="btn btn-neutral float-right" title="Model Core" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

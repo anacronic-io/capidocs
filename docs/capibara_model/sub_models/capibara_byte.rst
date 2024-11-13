@@ -1,5 +1,5 @@
 Capibara Byte Module
-===================
+====================
 
 This module implements a Mamba Byte layer for neural networks using JAX/Flax, combining advanced techniques like BitNet, Liquid layers, and CapibaraJAXSSM.
 
@@ -9,7 +9,7 @@ Classes
 -------
 
 CapibaraByte
-~~~~~~~~~~~
+------------
 
 .. autoclass:: CapibaraByte
    :members:
@@ -60,7 +60,7 @@ CapibaraByte
       Returns layer configuration as a dictionary.
 
 Implementation Details
---------------------
+---------------------- 
 
 The layer implements a sequence of operations:
 
@@ -75,17 +75,7 @@ The layer implements a sequence of operations:
 9. Optional residual connection
 10. Dropout
 
-Dependencies
------------
 
-- JAX and Flax for neural network operations
-- Custom layers:
-    - SyntheticEmbedding
-    - BitNet
-    - Liquid
-    - BitNetQuantizer
-    - MetaBAMDP
-    - CapibaraJAXSSM
 
 Example Usage
 ------------
@@ -117,4 +107,61 @@ See Also
 - :doc:`capibara_jax_ssm`
 - :doc:`bitnet`
 - :doc:`liquid`
-- :doc:`meta_bamdp` 
+- :doc:`meta_bamdp`
+
+Dependencies
+------------
+
+Core Dependencies:
+------------------
+
+- **JAX**: Required for array operations and automatic differentiation
+    - jax
+    - jax.numpy
+- **Flax**: Required for neural network module definitions
+    - flax.linen
+
+Custom Layer Dependencies:
+--------------------------
+
+- **CapibaraJAXSSM**: State space model implementation
+- **SyntheticEmbedding**: For embedding processing
+- **BitNet**: For binary neural network operations
+- **Liquid**: For liquid computing layers
+- **BitNetQuantizer**: For quantization operations
+- **MetaBAMDP**: For meta-learning and decision processes
+
+Python Package Requirements:
+----------------------------
+
+.. code-block:: text
+
+    jax>=0.4.13
+    flax>=0.7.0
+    numpy>=1.24.0
+    typing>=3.7.4
+    logging>=0.5.1.2
+
+Optional Dependencies:
+----------------------
+
+- **optax**: For optimization algorithms (if training is needed)
+- **tensorboard**: For visualization and logging (optional)
+- **pytest**: For running tests (development only)
+
+Installation
+------------
+
+You can install the required dependencies using pip:
+
+.. code-block:: bash
+
+    pip install -r requirements.txt
+
+Or install the package with all dependencies:
+
+.. code-block:: bash
+
+    pip install capibara-model[all]
+
+Note: Some custom layers may require additional installation steps. Please refer to their respective documentation.

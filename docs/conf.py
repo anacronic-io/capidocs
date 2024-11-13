@@ -10,8 +10,8 @@ import sphinx_rtd_theme # type: ignore
 project = 'capibara-gpt'
 copyright = f'{datetime.now().year}, Marco Durán'
 author = 'Marco Durán'
-release = '1.0.17'
-version = '1.0'
+release = '1.2.2'
+version = '1.1'
 
 # Configuración del tema
 html_theme = 'sphinx_rtd_theme'
@@ -85,6 +85,9 @@ html_sidebars = {
         'relations.html',
         'searchbox.html',
         'navigation.html',
+        'custom_sidebar.html',
+        'versions.html',
+        'toggle_sidebar.html',
     ]
 }
 
@@ -93,7 +96,9 @@ latex_elements = {
     'papersize': 'letterpaper',
     'pointsize': '10pt',
     'preamble': '',
-    'figure_align': 'htbp'
+    'figure_align': 'htbp',
+    'extraclassoptions': 'openany,oneside',
+    
 }
 
 # Intersphinx mapping
@@ -101,6 +106,11 @@ intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
     'numpy': ('https://numpy.org/doc/stable/', None),
     'jax': ('https://jax.readthedocs.io/en/latest/', None),
+    'flax': ('https://flax.readthedocs.io/en/latest/', None),
+    'optax': ('https://optax.readthedocs.io/en/latest/', None),
+    'xla': ('https://www.tensorflow.org/xla', None),
+    'tpu': ('https://cloud.google.com/tpu', None),
+    'tensorflow': ('https://www.tensorflow.org/api_docs', None),
 }
 
 # -- Extension configuration -------------------------------------------------
@@ -129,7 +139,7 @@ nitpick_ignore = [
 # -- GitHub repository -------------------------------------------------
 html_context = {
     "display_github": True,
-    "github_user": "anachronicsofa",
+    "github_user": "anachroni",
     "github_repo": "capibara-gpt",
     "github_version": "main",
     "conf_py_path": "/docs/",

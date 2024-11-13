@@ -1,82 +1,162 @@
-Configuration Documentation
-===========================
+Configuration Module
+==================
 
-This document provides an overview of the configuration settings used in the CapibaraGPT model. The configurations are defined in `config.py` and are essential for setting up the model's environment and parameters.
+Overview
+--------
+The configuration module provides a unified interface for managing CapibaraModel settings through environment variables, configuration files, and Weights & Biases integration.
+
+Key Features
+-----------
+- Environment variable loading with type conversion
+- .env file support
+- Weights & Biases integration
+- Default value handling
+- Configuration validation
+- Dataclass-based configuration structure
+
+Configuration Classes
+-------------------
+
+CapibaraConfig
+~~~~~~~~~~~~~
+.. autoclass:: capibara_model.core.config.CapibaraConfig
+   :members:
+   :undoc-members:
+   :special-members: __init__
+
+Main configuration container that holds all sub-configurations:
+
+- Training configuration
+- Model parameters
+- Pruning settings
+- Weights & Biases integration
+
+TrainingConfig
+~~~~~~~~~~~~
+.. autoclass:: capibara_model.core.config.TrainingConfig
+   :members:
+   :undoc-members:
+
+Training-specific parameters including:
+
+- Random seed
+- Batch size
+- Learning rate
+- Number of epochs
+- Optimizer selection
+- Loss function
+- Metrics
+- Early stopping patience
+
+ModelConfig
+~~~~~~~~~~
+.. autoclass:: capibara_model.core.config.ModelConfig
+   :members:
+   :undoc-members:
+
+Model architecture parameters:
+
+- Input dimension
+- Hidden size
+- Number of layers
+- Dropout rate
+- Activation function
+
+PruningConfig
+~~~~~~~~~~~
+.. autoclass:: capibara_model.core.config.PruningConfig
+   :members:
+   :undoc-members:
+
+Model pruning parameters:
+
+- MOR threshold
+- Sparsity ratio
+- Pruning method
+- Pruning schedule
+
+WandbConfig
+~~~~~~~~~~
+.. autoclass:: capibara_model.core.config.WandbConfig
+   :members:
+   :undoc-members:
+
+Weights & Biases integration settings:
+
+- Project name
+- Entity
+- Model logging
+- Gradient logging
+
+Usage Examples
+------------
+
+Loading from Environment Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    from capibara_model.core.config import CapibaraConfig
+
+    # Load configuration from environment variables
+    config = CapibaraConfig.from_env()
+
+Loading from Dictionary
+~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+    config_dict = {
+        "training": {
+            "batch_size": 64,
+            "learning_rate": 0.001
+        },
+        "model": {
+            "hidden_size": 1024
+        }
+    }
+    config = CapibaraConfig.from_dict(config_dict)
 
 Environment Variables
----------------------
+------------------
 
-The following environment variables are loaded from a `.env` file using `python-dotenv`:
+Training Configuration
+~~~~~~~~~~~~~~~~~~~~
+- TRAINING_SEED (default: 42)
+- TRAINING_BATCH_SIZE (default: 32)
+- TRAINING_LEARNING_RATE (default: 0.001)
+- TRAINING_NUM_EPOCHS (default: 10)
+- TRAINING_OPTIMIZER (default: 'adam')
+- TRAINING_LOSS_FUNCTION (default: 'cross_entropy')
+- TRAINING_METRICS
+- TRAINING_EARLY_STOPPING_PATIENCE (default: 5)
 
-- **RANDOM_SEED**: Seed for random number generation.
-- **CAPIBARA_LOG_LEVEL**: Logging level for the application.
-- **CAPIBARA_BASE_CONFIG_PATH**: Path to the base configuration file.
-- **GCS_BUCKET_NAME**: Name of the Google Cloud Storage bucket.
+Model Configuration
+~~~~~~~~~~~~~~~~
+- MODEL_INPUT_DIM (default: 768)
+- MODEL_HIDDEN_SIZE (default: 768)
+- MODEL_NUM_LAYERS (default: 12)
+- MODEL_DROPOUT_RATE (default: 0.1)
+- MODEL_ACTIVATION_FUNCTION (default: 'relu')
 
-These variables are accessed in the code as follows:
+Pruning Configuration
+~~~~~~~~~~~~~~~~~~
+- PRUNING_MOR_THRESHOLD (default: 0.7)
+- PRUNING_SPARSITY_RATIO (default: 0.5)
+- PRUNING_METHOD (default: 'magnitude')
+- PRUNING_SCHEDULE (default: 'constant')
 
-```python
-import os
-RANDOM_SEED = os.getenv('RANDOM_SEED')
-CAPIBARA_LOG_LEVEL = os.getenv('CAPIBARA_LOG_LEVEL')
-CAPIBARA_BASE_CONFIG_PATH = os.getenv('CAPIBARA_BASE_CONFIG_PATH')
-GCS_BUCKET_NAME = os.getenv('GCS_BUCKET_NAME')
-```
+Weights & Biases Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- WANDB_PROJECT
+- WANDB_ENTITY
+- WANDB_LOG_MODEL (default: false)
+- WANDB_LOG_GRADIENTS (default: false)
 
-Model Configuration Classes
----------------------------
+Validation
+---------
+The configuration system includes validation for:
 
-### OptimizationConfig
-
-Defines the optimization settings for the model.
-
-- **use_flash_attention**: Enable flash attention (default: `True`).
-- **use_rotary_embeddings**: Use rotary embeddings (default: `True`).
-- **use_alibi**: Use ALiBi (Attention with Linear Biases) (default: `True`).
-- **use_parallel_layers**: Use parallel layers (default: `True`).
-- **attention_implementation**: Type of attention implementation (default: `"flash"`).
-- **use_mixed_precision**: Enable mixed precision training (default: `True`).
-- **mixed_precision_dtype**: Data type for mixed precision (default: `"bfloat16"`).
-
-### TPUConfig
-
-Configuration specific to TPU usage.
-
-- **use_tpu**: Enable TPU usage (default: `True`).
-- **tpu_name**: Name of the TPU (default: `"capibara-tpu"`).
-- **tpu_zone**: Zone of the TPU (default: `"us-central1-a"`).
-- **gcp_project**: Google Cloud Project name (default: `"capibara-project"`).
-- **tpu_topology**: Topology of the TPU (default: `"v3-8"`).
-- **num_tpu_cores**: Number of TPU cores (default: `8`).
-
-### TrainingConfig
-
-Defines the training parameters for the model.
-
-- **batch_size**: Size of the training batch (default: `32`).
-- **learning_rate**: Learning rate for the optimizer (default: `5e-5`).
-- **num_train_steps**: Number of training steps (default: `100000`).
-- **num_warmup_steps**: Number of warmup steps (default: `1000`).
-- **optimizer**: Optimizer type (default: `"adamw"`).
-- **weight_decay**: Weight decay for the optimizer (default: `0.01`).
-- **gradient_accumulation_steps**: Steps for gradient accumulation (default: `1`).
-- **max_grad_norm**: Maximum gradient norm (default: `1.0`).
-- **seed**: Random seed for training (default: `42`).
-
-Usage
------
-
-To use these configurations, ensure that the `.env` file is correctly set up in your project directory. The configurations can be accessed and modified in your Python code as needed.
-
-```python
-from capibara_model.core.config import OptimizationConfig, TPUConfig, TrainingConfig
-
-# Example usage
-opt_config = OptimizationConfig()
-tpu_config = TPUConfig()
-train_config = TrainingConfig()
-
-print(f"Batch size: {train_config.batch_size}")
-```
-
-This document should be updated regularly to reflect any changes in the configuration settings or the addition of new parameters.
+- Dropout rate (must be between 0 and 1)
+- Sparsity ratio (must be between 0 and 1)
+- MOR threshold (must be between 0 and 1)

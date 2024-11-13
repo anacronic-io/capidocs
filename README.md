@@ -1,6 +1,6 @@
 # CapibaraModel CLI
 
-![Capibara SSBD Model](./capibara_model/src/public/3BSSBD.webp)
+![Capibara SSBD Model](./docs/src/public/3BSSBD.webp)
 
 CapibaraModel is a command-line tool for training, evaluating, and deploying language models based on State Space and Mamba architectures, optimized for TPUs and featuring advanced hyperparameter optimization.
 
